@@ -1,17 +1,17 @@
 <section class="page-section about-heading">
     <div class="container">
-      <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="{{asset('img/about.jpg')}}" alt="">
+      <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="{{$articles[2]->img}}" alt="">
       <div class="about-heading-content">
         <div class="row">
           <div class="col-xl-9 col-lg-10 mx-auto">
             <div class="bg-faded rounded p-5">
               <h2 class="section-heading mb-4">
-                <span class="section-heading-upper">{{$about->title}}</span>
-                <span class="section-heading-lower">{{$about->subtitle}}</span>
+                <span class="section-heading-upper">{{$articles[2]->title}}</span>
+                <span class="section-heading-lower">{{$articles[2]->subtitle}}</span>
               </h2>
-              <p>{{$about->text[0]}}</p>
+              <p>{{$articlesText[0]}}</p>
               <p class="mb-0">
-                {{$about->text[1][0]}}<em>{{$about->text[1][1]}}</em>{{$about->text[1][2]}}</p>
+                {{$articlesText[1][0]}}<em>{{$articlesText[1][1]}}</em>{{$articlesText[1][2]}}</p>
             </div>
           </div>
         </div>

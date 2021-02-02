@@ -2,14 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
 {
     public function index(){
-        $about=
-            (object)['title'=>'Strong Coffee, Strong Roots','subtitle'=>'About Our Cafe','text'=>['Founded in 1987 by the Hernandez brothers, our establishment has been serving up rich coffee sourced from artisan farmers in various regions of South and Central America. We are dedicated to travelling the world, finding the best coffee, and bringing back to you here in our cafe.',['We guarantee that you will fall in',' lust ','with our decadent blends the moment you walk inside until you finish your last sip. Join us for your daily routine, an outing with friends, or simply just to enjoy some alone time.']]]
-        ;
-        return view('pages.about',compact('about'));
+        $articles = Article::all();
+        // separating sentences
+        $sentences = explode('.',$articles[2]->text);
+        $paragraphe1 = ($sentences[0].".".$sentences[1].".");
+        // extracting "lust"
+        $pos = strpos($sentences[2], 'lust');
+        $s2p1 = substr($sentences[2], 0, $pos);
+        $s2p2 = substr($sentences[2], $pos, 4);
+        $s2p3 = substr($sentences[2], $pos+4, strlen($sentences[2])).".".$sentences[3].".";
+
+        $articlesText = [$paragraphe1,[$s2p1,$s2p2,$s2p3]];
+        return view('pages.about',compact('articles','articlesText'));
     }
 }
